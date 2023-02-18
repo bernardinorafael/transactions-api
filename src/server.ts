@@ -1,9 +1,17 @@
+import cookie from '@fastify/cookie'
 import fastify from 'fastify'
 
 import { env } from './env'
 import { transactionsRoutes } from './routes/transactions'
 
-const app = fastify()
+const app = fastify({
+  logger: true,
+})
+
+app.register(cookie)
+
+// app.addHook('preHandler', async (req, reply) => {})
+
 app.register(transactionsRoutes, {
   prefix: 'transactions',
 })
