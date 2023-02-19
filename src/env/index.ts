@@ -6,7 +6,9 @@ const envSchema = z.object({
   NODE_ENV: z.enum(['production', 'development', 'test']).default('production'),
   DATABASE_CLIENT: z.enum(['sqlite', 'pg']),
   DATABASE_URL: z.string({ required_error: 'DATABASE_URL not provided.' }),
-  PORT: z.coerce .number({ required_error: 'Server PORT not provided.' }).default(3333),
+  PORT: z.coerce
+    .number({ required_error: 'Server PORT not provided.' })
+    .default(3333),
 })
 
 const _env = envSchema.safeParse(process.env)

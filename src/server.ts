@@ -16,6 +16,10 @@ app.register(transactionsRoutes, {
   prefix: 'transactions',
 })
 
+app.get('/', async (req, reply) => {
+  return reply.status(200).send({ message: 'Welcome to my API, Bitch!!' })
+})
+
 app.listen({ port: env.PORT }, (err) => {
   if (err) throw err
   console.log(`Server listening on port ${env.PORT}`)
